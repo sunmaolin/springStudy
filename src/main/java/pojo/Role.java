@@ -1,6 +1,18 @@
 package pojo;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+/**
+ * 使用注解的形式，需要加上@Compinent注解 默认id为类名第一个小写
+ */
+@Component
+//也可以自定义id
+//@Component(value = "role")
 public class Role {
+
+    //通过注解的形式给属性赋初值
+    @Value("1")
     private int roleId;
     private String roleName;
     private String note;

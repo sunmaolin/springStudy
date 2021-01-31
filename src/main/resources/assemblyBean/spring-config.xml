@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--bean 的id属性不是必须，若没有写，会使用全限定名#{number} forExample pojo.Role#{0}-->
+
+    <!--构造器注入-->
+    <bean id="roleConstructInject" class="pojo.Role">
+        <!--index代表构造器参数的顺序-->
+        <constructor-arg index="0" value="1"/>
+        <constructor-arg index="1" value="孙茂林"/>
+    </bean>
+
+    <!--setter注入-->
+    <bean id="setterInject" class="pojo.Role">
+        <property name="roleId" value="1"/>
+        <property name="roleName" value="孙茂林"/>
+        <property name="note" value="太帅"/>
+    </bean>
+
+    <!--接口注入-->
+    <!--比如我们使用tomcat的context.xml的数据库连接资源-->
+    <bean id="interfaceInject" class="org.springframework.jndi.JndiObjectFactoryBean" lazy-init="true">
+        <property name="jndiName">
+            <value>java:comp/env/jdbc/ssm</value>
+        </property>
+    </bean>
+
+
+
+</beans>

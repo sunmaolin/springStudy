@@ -5,9 +5,11 @@
        xmlns:c="http://www.springframework.org/schema/c"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
     <!--bean 的id属性不是必须，若没有写，会使用全限定名#{number} forExample pojo.Role#{0}-->
@@ -86,6 +88,18 @@
 
     <!--这时，复杂属性装配时，就可以使用上面定义好的集合进行装配-->
     <bean id="nameSpaceComplexInject" class="pojo.ComplexAssembly" p:list-ref="list"/>
+
+    <!--装配三方jar-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="url" value=""/>
+        <!-- ... -->
+    </bean>
+    <!--若存在好多xml定义，我们可以在这里将其引入，然后在ApplicationConfig只引入当前的xml文件即可-->
+    <!--<import resource="spring-config1.xml"/>-->
+    <!--或者我们不需要定义@Component与@ComponentScan注解，直接在此定义要扫描的包-->
+    <!--与@ComponentScan（basePackages=""）一致-->
+    <!--<context:component-scan base-package="pojo"/>-->
+
 
 
 

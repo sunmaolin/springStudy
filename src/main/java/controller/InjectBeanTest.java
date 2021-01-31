@@ -23,7 +23,8 @@ public class InjectBeanTest {
 //        testComplexBean(path);
 //        testComplexNameSpaceBean(path);
 //        testInjectBeanByAnnotation();
-        testDifferentPackageScan();
+//        testDifferentPackageScan();
+        testAutowired();
     }
 
     /**
@@ -75,4 +76,15 @@ public class InjectBeanTest {
         RoleService roleService = applicationContext.getBean(RoleService.class);
         roleService.printRole(role);
     }
+
+    /**
+     * 测试自动注入@Autowired注解
+     */
+    public static void testAutowired(){
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+        RoleService roleService = applicationContext.getBean(RoleService.class);
+        roleService.printRole();
+    }
+
+
 }

@@ -8,4 +8,9 @@ public interface RoleService {
      * @param role
      */
     void printRole(Role role);
+
+    /**
+     * 测试自动注入@Autowired注解
+     */
+    void printRole();
 }

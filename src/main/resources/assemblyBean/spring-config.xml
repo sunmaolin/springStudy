@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--schema/c  schema/p  为使用命名空间装配引入的文件-->
+<!--scheme/util 命名空间复杂装配使用-->
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
     <!--bean 的id属性不是必须，若没有写，会使用全限定名#{number} forExample pojo.Role#{0}-->
 
@@ -65,6 +71,21 @@
             </array>
         </property>
     </bean>
+
+    <!--命名空间装配-->
+    <!--construct c:_0 第一个都早参数  c:_1 第二个构造参数-->
+    <bean id="nameSpaceInject1" class="pojo.Role" c:_0="1" c:_1="孙茂林"/>
+    <!--property p:roleId p:+属性名 -->
+    <bean id="nameSpaceInject2" class="pojo.Role" p:roleId="1" p:roleName="孙茂林"/>
+
+    <!--使用util定义一个list-->
+    <util:list id="list">
+        <value>value-1</value>
+        <value>value-2</value>
+    </util:list>
+
+    <!--这时，复杂属性装配时，就可以使用上面定义好的集合进行装配-->
+    <bean id="nameSpaceComplexInject" class="pojo.ComplexAssembly" p:list-ref="list"/>
 
 
 

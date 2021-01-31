@@ -6,6 +6,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pojo.ComplexAssembly;
 import pojo.Role;
 
+import java.util.Arrays;
+
 public class InjectBeanTest {
     
     private static Logger logger = Logger.getLogger(InjectBeanTest.class);
@@ -13,7 +15,8 @@ public class InjectBeanTest {
     public static void main(String[] args) {
         String path = "assemblyBean/spring-config.xml";
 //        testOrdinaryBean(path);
-        testComplexBean(path);
+//        testComplexBean(path);
+        testComplexNameSpaceBean(path);
     }
 
     /**
@@ -34,5 +37,11 @@ public class InjectBeanTest {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext(path);
         ComplexAssembly complexAssembly = applicationContext.getBean("complexAssembly", ComplexAssembly.class);
         logger.info(complexAssembly);
+    }
+
+    public static void testComplexNameSpaceBean(String path){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(path);
+        ComplexAssembly complexAssembly = applicationContext.getBean("nameSpaceComplexInject",ComplexAssembly.class);
+        logger.info(complexAssembly.getList().toString());
     }
 }

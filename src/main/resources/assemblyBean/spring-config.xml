@@ -100,6 +100,19 @@
     <!--与@ComponentScan（basePackages=""）一致-->
     <!--<context:component-scan base-package="pojo"/>-->
 
+    <!--相当与在配置类上添加@PropertySource，并配置占位解析类-->
+    <context:property-placeholder ignore-resource-not-found="true" location="database-config.properties"/>
+    <!--当存在多个properties文件时-->
+    <!--<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <array>
+                <value>database-config.properties</value>
+                <value>database-config.properties</value>
+            </array>
+        </property>
+        <property name="ignoreResourceNotFound" value="true"/>
+    </bean>-->
+
 
 
 

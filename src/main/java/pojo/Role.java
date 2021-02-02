@@ -1,6 +1,8 @@
 package pojo;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,6 +11,10 @@ import org.springframework.stereotype.Component;
 @Component
 //也可以自定义id
 //@Component(value = "role")
+/**
+ * 配置单例或者多例
+ */
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class Role {
 
     //通过注解的形式给属性赋初值

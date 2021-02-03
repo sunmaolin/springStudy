@@ -73,6 +73,7 @@ public class InjectBeanTest {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ApplicationConfig.class);
         Role role = applicationContext.getBean(Role.class);
         //这里只定义了RoleServiceImpl注解component，为什么能扫描到呢？因为之定义了一个RoleService的实现类
+        //注意：虽然这里给RoleServiceImpl加了注解，但是根据类型获取要用接口，他的父类，直接写RoleServiceImpl.class报错找不到
         RoleService roleService = applicationContext.getBean(RoleService.class);
         roleService.printRole(role);
     }

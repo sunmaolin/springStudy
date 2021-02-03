@@ -97,7 +97,7 @@
     <!--若存在好多xml定义，我们可以在这里将其引入，然后在ApplicationConfig只引入当前的xml文件即可-->
     <!--<import resource="spring-config1.xml"/>-->
     <!--或者我们不需要定义@Component与@ComponentScan注解，直接在此定义要扫描的包-->
-    <!--与@ComponentScan（basePackages=""）一致-->
+    <!--与@ComponentScan（basePackages=""）一致,多个包用逗号隔开-->
     <!--<context:component-scan base-package="pojo"/>-->
 
     <!--相当与在配置类上添加@PropertySource，并配置占位解析类-->

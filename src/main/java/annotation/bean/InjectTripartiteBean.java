@@ -3,7 +3,10 @@ package annotation.bean;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.commons.dbcp.BasicDataSourceFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -13,7 +16,9 @@ import java.util.Properties;
  * 在源码上进行修改添加@Component注解，请看下面
  * 当然  三方jar包，还是推荐使用XML的方式
  */
-@Configuration //告诉Spring这是一个配置文件===spring-config.xml，我觉得这个注解与ComponentScan相同
+//告诉Spring这是一个配置文件===spring-config.xml，与Component注解区别是该注解有个非常
+//重要的属性 proxyBeanMethods（默认为true，@Bean返回的都是单例，相反多例）
+@Configuration
 public class InjectTripartiteBean {
 
     /**

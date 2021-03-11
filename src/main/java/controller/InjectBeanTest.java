@@ -24,7 +24,8 @@ public class InjectBeanTest {
 //        testComplexNameSpaceBean(path);
 //        testInjectBeanByAnnotation();
 //        testDifferentPackageScan();
-        testAutowired();
+//        testAutowired();
+        testConditional();
     }
 
     /**
@@ -85,6 +86,15 @@ public class InjectBeanTest {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ApplicationConfig.class);
         RoleService roleService = applicationContext.getBean(RoleService.class);
         roleService.printRole();
+    }
+
+    /**
+     * 测试条件化装配
+     */
+    public static void testConditional(){
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+        Role role = applicationContext.getBean(Role.class);
+        System.out.println(role);
     }
 
 

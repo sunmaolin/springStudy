@@ -1,12 +1,13 @@
 package annotation.config;
 
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.ImportResource;
+import annotation.conditional.RoleConditional;
+import org.springframework.context.annotation.*;
+import pojo.PojoConfig;
 import pojo.Role;
 import service.RoleService;
+
 //扫描所定义的包
-@ComponentScan(basePackages = {"pojo","service"})
+//@ComponentScan(basePackages = {"pojo","service"})
 //扫描所定义的类
 //@ComponentScan(basePackageClasses = {Role.class,RoleService.class})
 //或者同时定义
@@ -19,4 +20,11 @@ import service.RoleService;
 //若我们有好多的配置类如ApplicationConfig1\ApplicationConfig2,可通过下面的注解
 //@Import({ApplicationConfig1.class})
 public class ApplicationConfig {
+
+    @Conditional({RoleConditional.class})
+    @Bean
+    public Role conditionalRole(){
+        return new Role();
+    }
+
 }
